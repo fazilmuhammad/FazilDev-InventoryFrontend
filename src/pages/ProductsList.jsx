@@ -127,7 +127,7 @@ const ProductsList = () => {
       )
     },
     {
-      header: 'Product',
+      header: 'Product Name',
       accessorKey: 'name',
       cell: (row) => (
         <div className="flex items-center gap-4">

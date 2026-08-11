@@ -4,17 +4,28 @@ import axios from 'axios';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    try {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser && storedUser !== 'undefined' && storedUser !== 'null') {
+        return JSON.parse(storedUser);
+      }
+    } catch (e) {
+      console.error("Failed to parse user from local storage", e);
+    }
+    return null;
+  });
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    
-    if (storedUser && token) {
-      setUser(JSON.parse(storedUser));
-      // Optionally, set axios default headers here
+    if (token && user) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    } else if (!token || !user) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      setUser(null);
     }
     setLoading(false);
   }, []);
