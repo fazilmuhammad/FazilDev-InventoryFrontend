@@ -126,7 +126,7 @@ const CategoriesList = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => handleOpenEditModal(row)}
-            className="text-xs px-3 py-1.5 font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="text-xs px-3 py-1.5 font-medium text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors"
           >
             Edit
           </button>

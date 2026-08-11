@@ -99,23 +99,23 @@ const ProductDetail = () => {
     <div className="space-y-6">
       {/* Header Info Card */}
       <div className="bg-white dark:bg-[#1a1d24] p-6 border border-gray-200 dark:border-gray-800 w-full transition-colors">
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-3">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="flex items-start gap-4">
             <button
               onClick={() => navigate('/products')}
-              className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors rounded-md"
+              className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors rounded-md mt-1.5"
               title="Back to Products"
             >
               <ArrowLeftLinear size={20} />
             </button>
-            <span className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider bg-gray-100 dark:bg-gray-800 px-3 py-1">
-              {product.category?.name || 'Uncategorized'}
-            </span>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">{product.name}</h1>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 mt-1.5">
             <Link
               to={`/products/edit/${product.id}`}
-              className="px-4 py-1.5 bg-white dark:bg-[#1a1d24] border border-gray-200 dark:border-gray-700 font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-sm"
+              className="px-4 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 font-medium hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors text-sm"
             >
               Edit
             </Link>
@@ -127,17 +127,12 @@ const ProductDetail = () => {
             </button>
             <button
               onClick={() => setStockModalOpen(true)}
-              className="px-4 py-1.5 font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm"
+              className="px-4 py-1.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-400 font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-colors text-sm"
             >
               Adjust Stock
             </button>
           </div>
         </div>
-
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{product.name}</h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
-          <span className="font-medium text-gray-700 dark:text-gray-300">Product Code:</span> {product.productCode}
-        </p>
       </div>
 
       {/* Main Grid: items-stretch automatically matches heights of items in the same row */}
@@ -154,7 +149,7 @@ const ProductDetail = () => {
                   alt={product.name}
                   className="w-full h-full object-contain p-2 absolute inset-0"
                 />
-                <div 
+                <div
                   className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10 cursor-pointer"
                   onClick={() => setFullscreenPreview(true)}
                   title="Preview"
@@ -206,18 +201,8 @@ const ProductDetail = () => {
               <p className="text-xl font-semibold text-gray-900 dark:text-white">{stock} Units</p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1.5 uppercase tracking-wider">Unit Price</p>
-              <p className="text-xl font-semibold text-gray-900 dark:text-white">
-                {product.price ? new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(product.price) : '-'}
-              </p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1.5 uppercase tracking-wider">Vendor / Supplier</p>
-              <p className="text-lg font-medium text-gray-900 dark:text-gray-200">{product.vendor || '-'}</p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1.5 uppercase tracking-wider">Storage Location</p>
-              <p className="text-lg font-medium text-gray-900 dark:text-gray-200">{product.location || '-'}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1.5 uppercase tracking-wider">Category</p>
+              <p className="text-xl font-semibold text-gray-900 dark:text-white">{product.category?.name || 'Uncategorized'}</p>
             </div>
           </div>
         </div>
@@ -230,18 +215,18 @@ const ProductDetail = () => {
             <>
               <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Product Barcode</h3>
               <div className="bg-white p-4 rounded-xl border border-gray-100 flex items-center justify-center">
-              <div className="scale-90 origin-center">
-                <Barcode 
-                  value={product.productCode} 
-                  format="CODE128"
-                  width={1.5}
-                  height={50}
-                  fontSize={14}
-                  background="#ffffff"
-                  lineColor="#000000"
-                />
+                <div className="scale-90 origin-center">
+                  <Barcode
+                    value={product.productCode}
+                    format="CODE128"
+                    width={1.5}
+                    height={50}
+                    fontSize={14}
+                    background="#ffffff"
+                    lineColor="#000000"
+                  />
+                </div>
               </div>
-            </div>
             </>
           ) : (
             <span className="text-gray-400 dark:text-gray-500">No Barcode</span>
@@ -284,11 +269,11 @@ const ProductDetail = () => {
 
       {/* Fullscreen Image Preview Modal */}
       {fullscreenPreview && allImages.length > 0 && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm"
           onClick={() => setFullscreenPreview(false)}
         >
-          <button 
+          <button
             type="button"
             className="absolute top-4 right-4 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-all z-10"
             onClick={() => setFullscreenPreview(false)}
@@ -308,9 +293,9 @@ const ProductDetail = () => {
             </button>
           )}
 
-          <img 
-            src={`http://localhost:3000${allImages[currentImageIdx]}`} 
-            alt="Fullscreen Preview" 
+          <img
+            src={`http://localhost:3000${allImages[currentImageIdx]}`}
+            alt="Fullscreen Preview"
             className="max-w-full max-h-full object-contain shadow-2xl rounded-sm select-none"
             onClick={(e) => e.stopPropagation()}
           />

@@ -53,9 +53,7 @@ const ProductForm = () => {
       setValue('name', data.name);
       setValue('categoryId', data.categoryId);
       setValue('stockQuantity', data.stock);
-      if (data.price) setValue('price', data.price);
-      if (data.vendor) setValue('vendor', data.vendor);
-      if (data.location) setValue('location', data.location);
+
       
       if (data.mainImage) {
         setMainImagePreview(`http://localhost:3000${data.mainImage}`);
@@ -131,9 +129,7 @@ const ProductForm = () => {
       if (!isEdit) {
         formData.append('stockQuantity', data.stockQuantity);
       }
-      if (data.price) formData.append('price', data.price);
-      if (data.vendor) formData.append('vendor', data.vendor);
-      if (data.location) formData.append('location', data.location);
+
       
       if (mainImageFile) {
         formData.append('main_image', mainImageFile);
@@ -270,33 +266,7 @@ const ProductForm = () => {
 
 
 
-            <div className="space-y-1.5">
-              <label className="text-xs font-medium text-gray-700 dark:text-gray-300">Price (Optional)</label>
-              <input
-                type="number" step="0.01"
-                {...register('price')}
-                className="w-full px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
-                placeholder="0.00"
-              />
-            </div>
 
-            <div className="space-y-1.5">
-              <label className="text-xs font-medium text-gray-700 dark:text-gray-300">Vendor (Optional)</label>
-              <input
-                {...register('vendor')}
-                className="w-full px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
-                placeholder="Vendor Name"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-xs font-medium text-gray-700 dark:text-gray-300">Location (Optional)</label>
-              <input
-                {...register('location')}
-                className="w-full px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
-                placeholder="e.g. Warehouse A"
-              />
-            </div>
           </div>
           
           <div className="space-y-5">
@@ -402,7 +372,7 @@ const ProductForm = () => {
           <button 
             type="button" 
             onClick={() => navigate('/products')}
-            className="px-4 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors rounded-none"
+            className="px-4 py-1.5 text-sm font-medium text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-900/20 hover:bg-rose-100 dark:hover:bg-rose-900/40 transition-colors rounded-none"
           >
             Cancel
           </button>

@@ -9,7 +9,6 @@ const Dashboard = () => {
   const [stats, setStats] = useState({
     totalProducts: 0,
     totalCategories: 0,
-    totalInventoryValue: 0,
     lowStockAlerts: [],
     recentProducts: []
   });
@@ -28,14 +27,6 @@ const Dashboard = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const formatCurrency = (value) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
-    }).format(value);
   };
 
   if (isLoading) {
@@ -74,7 +65,7 @@ const Dashboard = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white dark:bg-[#1a1d24] p-6 border border-gray-200 dark:border-gray-800 flex items-center justify-between transition-colors">
           <div>
             <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Total Products</p>
@@ -92,16 +83,6 @@ const Dashboard = () => {
           </div>
           <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-full text-green-600 dark:text-green-400">
             <TagLinear size={24} />
-          </div>
-        </div>
-
-        <div className="bg-white dark:bg-[#1a1d24] p-6 border border-gray-200 dark:border-gray-800 flex items-center justify-between transition-colors">
-          <div>
-            <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Total Inventory Value</p>
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white">{formatCurrency(stats.totalInventoryValue)}</h3>
-          </div>
-          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
-            <DollarLinear size={24} />
           </div>
         </div>
       </div>
@@ -168,7 +149,6 @@ const Dashboard = () => {
                 <thead className="bg-gray-50 dark:bg-gray-800/50 text-gray-500 dark:text-gray-400 uppercase text-xs">
                   <tr>
                     <th className="px-5 py-3 font-semibold border-b border-gray-200 dark:border-gray-800">Product</th>
-                    <th className="px-5 py-3 font-semibold border-b border-gray-200 dark:border-gray-800 text-right">Price</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
@@ -190,9 +170,6 @@ const Dashboard = () => {
                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{product.category?.name || 'Uncategorized'}</p>
                           </div>
                         </div>
-                      </td>
-                      <td className="px-5 py-3 text-sm font-medium text-gray-900 dark:text-gray-300 text-right">
-                        {product.price ? formatCurrency(product.price) : '-'}
                       </td>
                     </tr>
                   ))}

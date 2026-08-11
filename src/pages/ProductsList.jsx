@@ -140,9 +140,15 @@ const ProductsList = () => {
           </div>
           <div>
             <div className="font-semibold text-gray-900 dark:text-white">{row.name}</div>
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{row.productCode}</div>
           </div>
         </div>
+      )
+    },
+    {
+      header: 'Product Code',
+      accessorKey: 'productCode',
+      cell: (row) => (
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{row.productCode}</span>
       )
     },
     {
@@ -167,13 +173,13 @@ const ProductsList = () => {
         <div className="flex items-center gap-2">
           <Link
             to={`/products/detail/${row.id}`}
-            className="text-xs px-3 py-1.5 font-medium text-primary dark:text-blue-400 bg-primary/10 dark:bg-blue-900/20 hover:bg-primary/20 dark:hover:bg-blue-900/40 transition-colors"
+            className="text-xs px-3 py-1.5 font-medium text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors"
           >
             View
           </Link>
           <button
             onClick={() => handleAdjustClick(row)}
-            className="text-xs px-3 py-1.5 font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="text-xs px-3 py-1.5 font-medium text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-colors"
           >
             Adjust Stock
           </button>
