@@ -38,18 +38,17 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0f1115] flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans transition-colors">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white dark:bg-[#1a1d24] py-8 px-4 shadow sm:rounded-none sm:px-10 border border-gray-200 dark:border-gray-800 transition-colors">
+        <div className="bg-white dark:bg-[#1a1d24] py-8 px-4 sm:rounded-none sm:px-10 border border-gray-200 dark:border-gray-800 transition-colors">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-2xl text-primary dark:text-white mb-4">
+            <div className="inline-flex items-center justify-center p-3  rounded-2xl text-primary dark:text-white mb-4">
               <BuildingsLinear size={36} />
             </div>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Eurika-Inventory</h2>
-            <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Sign in to manage your inventory</p>
           </div>
           <form className="space-y-6" onSubmit={handleLogin}>
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email address</label>
-              <div className="mt-1 relative rounded-md shadow-sm">
+              <div className="mt-1 relative rounded-md">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <LetterLinear className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                 </div>
@@ -66,7 +65,7 @@ const Login = () => {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
-              <div className="mt-1 relative rounded-md shadow-sm">
+              <div className="mt-1 relative rounded-md">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <LockKeyholeLinear className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                 </div>

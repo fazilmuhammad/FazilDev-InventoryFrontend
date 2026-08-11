@@ -71,7 +71,7 @@ const Dashboard = () => {
             <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Total Products</p>
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white">{stats.totalProducts}</h3>
           </div>
-          <div className="p-4 bg-primary/10 dark:bg-primary/20 rounded-full text-primary dark:text-primary-hover">
+          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-500">
             <BoxLinear size={24} />
           </div>
         </div>
@@ -81,7 +81,7 @@ const Dashboard = () => {
             <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Total Categories</p>
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white">{stats.totalCategories}</h3>
           </div>
-          <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-full text-green-600 dark:text-green-400">
+          <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-full text-purple-500">
             <TagLinear size={24} />
           </div>
         </div>
