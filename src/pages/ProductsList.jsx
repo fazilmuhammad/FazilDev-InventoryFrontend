@@ -83,7 +83,7 @@ const ProductsList = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [pagination.page, debouncedSearch, selectedCategory]);
+  }, [pagination.page, pagination.limit, debouncedSearch, selectedCategory]);
 
   const fetchCategories = async () => {
     try {
