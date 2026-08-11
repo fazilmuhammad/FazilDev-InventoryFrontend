@@ -284,13 +284,13 @@ const ProductForm = () => {
                         <button 
                           type="button" 
                           onClick={() => setFullscreenPreview(mainImagePreview)} 
-                          className="p-1.5 bg-white/20 hover:bg-white/40 rounded-full text-white transition-colors" 
+                          className="p-1.5 text-white drop-shadow-md transition-colors hover:scale-110" 
                           title="Preview"
                         >
-                          <EyeLinear size={18} />
+                          <EyeLinear color="white" size={18} />
                         </button>
-                        <div className="relative p-1.5 bg-white/20 hover:bg-white/40 rounded-full text-white transition-colors cursor-pointer" title="Replace">
-                          <UploadLinear size={18} />
+                        <div className="relative p-1.5 text-white drop-shadow-md transition-colors cursor-pointer hover:scale-110" title="Replace">
+                          <UploadLinear color="white" size={18} />
                           <input 
                             type="file" 
                             accept="image/jpeg, image/png, image/webp"
@@ -333,18 +333,18 @@ const ProductForm = () => {
                       <button 
                         type="button"
                         onClick={() => setFullscreenPreview(preview)}
-                        className="p-1 bg-white/20 hover:bg-white/40 rounded-full text-white"
+                        className="p-1 text-white drop-shadow-md hover:scale-110 transition-transform"
                         title="Preview"
                       >
-                        <EyeLinear size={14} />
+                        <EyeLinear color="white" size={14} />
                       </button>
                       <button 
                         type="button"
                         onClick={() => removeGalleryImage(idx)}
-                        className="p-1 bg-white/20 hover:bg-white/40 rounded-full text-white"
+                        className="p-1 text-white drop-shadow-md hover:scale-110 transition-transform"
                         title="Remove"
                       >
-                        <CloseCircleLinear size={14} />
+                        <CloseCircleLinear color="white" size={14} />
                       </button>
                     </div>
                   </div>
@@ -410,7 +410,7 @@ const ProductForm = () => {
             className="absolute top-4 right-4 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-all"
             onClick={() => setFullscreenPreview(null)}
           >
-            <CloseCircleLinear size={24} />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
           <img 
             src={fullscreenPreview} 

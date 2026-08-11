@@ -93,7 +93,7 @@ const Layout = () => {
     <div className="h-screen overflow-hidden bg-gray-50 dark:bg-[#0f1115] font-sans text-gray-900 dark:text-gray-100 flex">
       <Sidebar isOpen={sidebarOpen} toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 
-      <div className={`flex-1 flex flex-col h-screen transition-all duration-300 ${sidebarOpen ? 'md:ml-64' : 'md:ml-20'}`}>
+      <div className={`flex-1 flex flex-col min-w-0 h-screen transition-all duration-300 ${sidebarOpen ? 'md:ml-64' : 'md:ml-20'}`}>
         <header className="h-16 flex-shrink-0 bg-white dark:bg-[#1a1d24] border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 z-10 transition-colors">
           {/* Mobile Sidebar Toggle (Hidden on Desktop) */}
           <button
@@ -150,7 +150,7 @@ const Layout = () => {
           </div>
         </header>
 
-        <main className="flex-1 p-4 md:p-8 w-full overflow-y-auto overflow-x-hidden">
+        <main className="flex-1 p-4 md:p-8 w-full min-w-0 overflow-y-auto overflow-x-hidden">
           <div className="w-full bg-white dark:bg-[#1a1d24] p-4 md:p-8 border border-gray-200 dark:border-gray-800 min-h-full transition-colors">
             <Outlet />
           </div>

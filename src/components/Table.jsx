@@ -5,7 +5,7 @@ const Table = ({ columns, data, pagination, onPageChange }) => {
   return (
     <div className="w-full">
       <div className="overflow-x-auto border border-gray-200 dark:border-gray-800">
-        <table className="w-full text-left border-collapse">
+        <table className="w-full min-w-max text-left border-collapse">
           <thead>
             <tr className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-800">
               {columns.map((col, idx) => (
@@ -20,7 +20,7 @@ const Table = ({ columns, data, pagination, onPageChange }) => {
               data.map((row, rowIndex) => (
                 <tr key={rowIndex} className="hover:bg-gray-50/80 dark:hover:bg-gray-800/50 transition-colors">
                   {columns.map((col, colIndex) => (
-                    <td key={colIndex} className="px-4 py-4 text-sm text-gray-900 dark:text-gray-200 align-middle">
+                    <td key={colIndex} className="px-4 py-4 text-sm text-gray-900 dark:text-gray-200 align-middle whitespace-nowrap">
                       {col.cell ? col.cell(row, rowIndex) : row[col.accessorKey]}
                     </td>
                   ))}

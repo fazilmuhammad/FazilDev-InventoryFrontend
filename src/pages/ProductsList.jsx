@@ -219,14 +219,14 @@ const ProductsList = () => {
       </div>
 
       <div className="flex flex-row items-center gap-2 mb-6 w-full">
-        <div className="relative flex-1">
+        <div className="relative flex-1 min-w-0">
           <MagniferLinear className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" size={16} />
           <input
             type="text"
             placeholder="Search products by name or SKU..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-8 pr-2 py-1.5 text-sm border border-gray-300 dark:border-gray-700 dark:bg-[#1a1d24] dark:text-white rounded-none focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-blue-400 focus:border-primary transition-all"
+            className="w-full min-w-0 pl-8 pr-2 py-1.5 text-sm border border-gray-300 dark:border-gray-700 dark:bg-[#1a1d24] dark:text-white rounded-none focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-blue-400 focus:border-primary transition-all"
           />
         </div>
         <div className="relative flex-shrink-0">
@@ -318,7 +318,7 @@ const ProductsList = () => {
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="w-full min-w-0 overflow-hidden">
         {isLoading ? (
           <SkeletonTable rows={10} columns={5} />
         ) : (

@@ -93,14 +93,14 @@ const Dashboard = () => {
         <div className="bg-white dark:bg-[#1a1d24] border border-gray-200 dark:border-gray-800 transition-colors">
           <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <DangerTriangleLinear size={20} className="text-red-500" />
+
               Low Stock Alerts
             </h3>
             <span className="text-xs font-semibold bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 px-2 py-1 rounded-full">
               {stats.lowStockAlerts.length} items
             </span>
           </div>
-          
+
           <div className="overflow-x-auto">
             {stats.lowStockAlerts.length === 0 ? (
               <p className="p-6 text-center text-gray-500 dark:text-gray-400 text-sm">All products have sufficient stock.</p>
@@ -133,14 +133,13 @@ const Dashboard = () => {
         <div className="bg-white dark:bg-[#1a1d24] border border-gray-200 dark:border-gray-800 transition-colors">
           <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <ClockCircleLinear size={20} className="text-gray-500 dark:text-gray-400" />
               Recently Added
             </h3>
             <Link to="/products" className="text-sm font-medium text-primary hover:text-primary-hover dark:text-blue-400 dark:hover:text-blue-300 flex items-center gap-1 transition-colors">
               View All <ArrowRightLinear size={16} />
             </Link>
           </div>
-          
+
           <div className="overflow-x-auto">
             {stats.recentProducts.length === 0 ? (
               <p className="p-6 text-center text-gray-500 dark:text-gray-400 text-sm">No products added yet.</p>

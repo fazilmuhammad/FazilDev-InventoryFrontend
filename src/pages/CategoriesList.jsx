@@ -208,7 +208,7 @@ const CategoriesList = () => {
         </div>
       </div>
 
-      <div className="flex-1 bg-white dark:bg-[#1a1d24] relative overflow-hidden flex flex-col border-none">
+      <div className="flex-1 bg-white dark:bg-[#1a1d24] relative flex flex-col border-none w-full min-w-0 overflow-hidden">
         {loading ? (
           <SkeletonTable rows={10} columns={3} />
         ) : (

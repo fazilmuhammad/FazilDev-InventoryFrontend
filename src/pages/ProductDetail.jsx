@@ -150,11 +150,11 @@ const ProductDetail = () => {
                   className="w-full h-full object-contain p-2 absolute inset-0"
                 />
                 <div
-                  className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10 cursor-pointer"
+                  className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10 cursor-pointer text-white"
                   onClick={() => setFullscreenPreview(true)}
                   title="Preview"
                 >
-                  <EyeLinear className="text-white" size={32} />
+                  <EyeLinear color="white" className="drop-shadow-md hover:scale-110 transition-transform" size={32} />
                 </div>
               </>
             ) : (
