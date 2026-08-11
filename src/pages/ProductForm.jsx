@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { getCategories, getProductById, createProduct, updateProduct } from '../services/api';
 import toast from 'react-hot-toast';
-import { Upload, X, Save, ArrowLeft, Image as ImageIcon, Plus, Eye } from 'lucide-react';
+import { UploadLinear, CloseCircleLinear, DisketteLinear, ArrowLeftLinear, GalleryLinear, AddCircleLinear, EyeLinear } from 'solar-icon-set';
 import ConfirmActionModal from '../components/ConfirmActionModal';
 import { SkeletonForm } from '../components/Skeleton';
 
@@ -53,7 +53,6 @@ const ProductForm = () => {
       setValue('name', data.name);
       setValue('categoryId', data.categoryId);
       setValue('stockQuantity', data.stock);
-      if (data.sku) setValue('sku', data.sku);
       if (data.price) setValue('price', data.price);
       if (data.vendor) setValue('vendor', data.vendor);
       if (data.location) setValue('location', data.location);
@@ -132,7 +131,6 @@ const ProductForm = () => {
       if (!isEdit) {
         formData.append('stockQuantity', data.stockQuantity);
       }
-      if (data.sku) formData.append('sku', data.sku);
       if (data.price) formData.append('price', data.price);
       if (data.vendor) formData.append('vendor', data.vendor);
       if (data.location) formData.append('location', data.location);
@@ -176,7 +174,7 @@ const ProductForm = () => {
             className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors rounded-md"
             title="Back to Products"
           >
-            <ArrowLeft size={20} />
+            <ArrowLeftLinear size={20} />
           </button>
           <h2 className="text-xl font-bold text-gray-900 dark:text-white">{isEdit ? 'Edit Product' : 'Add New Product'}</h2>
         </div>
@@ -270,26 +268,7 @@ const ProductForm = () => {
               {errors.stockQuantity && <p className="text-red-500 text-xs">{errors.stockQuantity.message}</p>}
             </div>
 
-            <div className="space-y-1.5">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">SKU (Optional)</label>
-                <button 
-                  type="button"
-                  onClick={() => {
-                    const randomStr = Math.random().toString(36).substring(2, 10).toUpperCase();
-                    setValue('sku', `SKU-${randomStr}`);
-                  }}
-                  className="text-[10px] uppercase font-bold tracking-wider text-primary hover:text-primary-hover transition-colors"
-                >
-                  Auto Generate
-                </button>
-              </div>
-              <input
-                {...register('sku')}
-                className="w-full px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
-                placeholder="Enter SKU"
-              />
-            </div>
+
 
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-gray-700 dark:text-gray-300">Price (Optional)</label>
@@ -338,10 +317,10 @@ const ProductForm = () => {
                           className="p-1.5 bg-white/20 hover:bg-white/40 rounded-full text-white transition-colors" 
                           title="Preview"
                         >
-                          <Eye size={18} />
+                          <EyeLinear size={18} />
                         </button>
                         <div className="relative p-1.5 bg-white/20 hover:bg-white/40 rounded-full text-white transition-colors cursor-pointer" title="Replace">
-                          <Upload size={18} />
+                          <UploadLinear size={18} />
                           <input 
                             type="file" 
                             accept="image/jpeg, image/png, image/webp"
@@ -354,7 +333,7 @@ const ProductForm = () => {
                   ) : (
                     <>
                       <div className="text-center text-gray-500 dark:text-gray-400">
-                        <ImageIcon className="mx-auto mb-1 opacity-50" size={24} />
+                        <GalleryLinear className="mx-auto mb-1 opacity-50" size={24} />
                         <span className="text-xs">Upload</span>
                       </div>
                       <input 
@@ -387,7 +366,7 @@ const ProductForm = () => {
                         className="p-1 bg-white/20 hover:bg-white/40 rounded-full text-white"
                         title="Preview"
                       >
-                        <Eye size={14} />
+                        <EyeLinear size={14} />
                       </button>
                       <button 
                         type="button"
@@ -395,7 +374,7 @@ const ProductForm = () => {
                         className="p-1 bg-white/20 hover:bg-white/40 rounded-full text-white"
                         title="Remove"
                       >
-                        <X size={14} />
+                        <CloseCircleLinear size={14} />
                       </button>
                     </div>
                   </div>
@@ -403,7 +382,7 @@ const ProductForm = () => {
                 
                 {galleryPreviews.length < 4 && (
                   <div className="w-20 h-20 border-2 border-dashed border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex items-center justify-center relative hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                    <Plus className="text-gray-400 dark:text-gray-500" size={20} />
+                    <AddCircleLinear className="text-gray-400 dark:text-gray-500" size={20} />
                     <input 
                       type="file" 
                       multiple
@@ -432,7 +411,7 @@ const ProductForm = () => {
             disabled={isSubmitting}
             className="flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium text-white bg-primary hover:bg-primary-hover shadow-sm transition-all disabled:opacity-70 rounded-none"
           >
-            <Save size={16} />
+            <DisketteLinear size={16} />
             {isSubmitting ? 'Saving...' : 'Save Product'}
           </button>
         </div>
@@ -461,7 +440,7 @@ const ProductForm = () => {
             className="absolute top-4 right-4 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-all"
             onClick={() => setFullscreenPreview(null)}
           >
-            <X size={24} />
+            <CloseCircleLinear size={24} />
           </button>
           <img 
             src={fullscreenPreview} 

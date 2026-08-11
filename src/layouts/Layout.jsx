@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Package, Tag, LogOut, Menu, X, ArrowLeft, ArrowRight, User, ChevronDown, Sun, Moon } from 'lucide-react';
+import { WidgetLinear, BoxLinear, TagLinear, Logout3Linear, HamburgerMenuLinear, CloseCircleLinear, ArrowLeftLinear, ArrowRightLinear, UserCircleLinear, AltArrowDownLinear, SunLinear, MoonLinear } from 'solar-icon-set';
 import { Toaster } from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -10,9 +10,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const isActive = (path) => location.pathname === path;
 
   const navItems = [
-    { name: 'Dashboard', path: '/', icon: <LayoutDashboard size={20} /> },
-    { name: 'Products', path: '/products', icon: <Package size={20} /> },
-    { name: 'Categories', path: '/categories', icon: <Tag size={20} /> },
+    { name: 'Dashboard', path: '/', icon: <WidgetLinear size={20} /> },
+    { name: 'Products', path: '/products', icon: <BoxLinear size={20} /> },
+    { name: 'Categories', path: '/categories', icon: <TagLinear size={20} /> },
   ];
 
   return (
@@ -31,13 +31,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       >
         <div className="h-16 flex items-center justify-between px-6 border-b border-gray-200 dark:border-gray-800 overflow-hidden">
           <div className="flex items-center gap-3 text-primary dark:text-white">
-            <Package size={24} className="flex-shrink-0" />
+            <BoxLinear size={24} className="flex-shrink-0" />
             <h1 className={`text-xl font-bold whitespace-nowrap transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 hidden md:block md:w-0'}`}>
               Eurika-Inventory
             </h1>
           </div>
           <button onClick={toggleSidebar} className="text-gray-500 hover:text-gray-900 dark:text-gray-400 md:hidden flex-shrink-0">
-            <X size={20} />
+            <CloseCircleLinear size={20} />
           </button>
         </div>
 
@@ -65,7 +65,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             title={!isOpen ? 'Expand Sidebar' : 'Collapse Sidebar'}
           >
             <div className="flex-shrink-0">
-              {isOpen ? <ArrowLeft size={20} /> : <ArrowRight size={20} />}
+              {isOpen ? <ArrowLeftLinear size={20} /> : <ArrowRightLinear size={20} />}
             </div>
             <span className={`font-medium whitespace-nowrap transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 hidden md:block md:w-0'}`}>
               Collapse Sidebar
@@ -100,7 +100,7 @@ const Layout = () => {
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-2 -ml-2 text-gray-500 hover:bg-gray-100 transition-colors md:hidden"
           >
-            <Menu size={24} />
+            <HamburgerMenuLinear size={24} />
           </button>
           <div className="flex-1 md:hidden"></div> {/* Spacer for mobile */}
           
@@ -114,7 +114,7 @@ const Layout = () => {
               className="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
               title="Toggle Dark Mode"
             >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+              {isDarkMode ? <SunLinear size={20} /> : <MoonLinear size={20} />}
             </button>
             
             <button
@@ -126,7 +126,7 @@ const Layout = () => {
                 {user?.avatar ? (
                   <img src={`http://localhost:3000${user.avatar}`} alt="Avatar" className="w-full h-full object-cover" />
                 ) : (
-                  <User size={18} />
+                  <UserCircleLinear size={18} />
                 )}
               </div>
             </button>
@@ -142,7 +142,7 @@ const Layout = () => {
                   className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-left"
                   onClick={handleLogout}
                 >
-                  <LogOut size={16} />
+                  <Logout3Linear size={16} />
                   Logout
                 </button>
               </div>

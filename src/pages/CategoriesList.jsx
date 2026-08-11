@@ -4,7 +4,7 @@ import Table from '../components/Table';
 import CategoryModal from '../components/CategoryModal';
 import ConfirmActionModal from '../components/ConfirmActionModal';
 import { SkeletonTable } from '../components/Skeleton';
-import { Plus, Search } from 'lucide-react';
+import { AddCircleLinear, MagniferLinear } from 'solar-icon-set';
 import toast from 'react-hot-toast';
 
 const CategoriesList = () => {
@@ -153,7 +153,7 @@ const CategoriesList = () => {
             onClick={handleOpenAddModal}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-white hover:bg-primary-hover shadow-sm transition-all text-sm rounded-none"
           >
-            <Plus size={16} />
+            <AddCircleLinear size={16} />
             Add Category
           </button>
         </div>
@@ -161,7 +161,7 @@ const CategoriesList = () => {
 
       <div className="flex flex-row items-center gap-2 mb-6 w-full">
         <div className="relative flex-1 min-w-[120px]">
-          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" size={16} />
+          <MagniferLinear className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" size={16} />
           <input
             type="text"
             placeholder="Search category..."

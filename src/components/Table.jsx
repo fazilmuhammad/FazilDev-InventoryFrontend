@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { AltArrowLeftLinear, AltArrowRightLinear } from 'solar-icon-set';
 
 const Table = ({ columns, data, pagination, onPageChange }) => {
   return (
@@ -49,7 +49,7 @@ const Table = ({ columns, data, pagination, onPageChange }) => {
               disabled={pagination.page === 1}
               className="p-1.5 rounded text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              <ChevronLeft size={18} />
+              <AltArrowLeftLinear size={18} />
             </button>
             
             {Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map(page => (
@@ -71,7 +71,7 @@ const Table = ({ columns, data, pagination, onPageChange }) => {
               disabled={pagination.page === pagination.totalPages}
               className="p-1.5 rounded text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              <ChevronRight size={18} />
+              <AltArrowRightLinear size={18} />
             </button>
           </div>
         </div>

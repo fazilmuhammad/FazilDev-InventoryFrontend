@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, ChevronLeft, ChevronRight, Eye, Trash2 } from 'lucide-react';
+import { ArrowLeftLinear, AltArrowLeftLinear, AltArrowRightLinear, EyeLinear, TrashBinTrashLinear } from 'solar-icon-set';
 import Barcode from 'react-barcode';
 import { getProductById, deleteProduct, adjustStock } from '../services/api';
 import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
@@ -106,7 +106,7 @@ const ProductDetail = () => {
               className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors rounded-md"
               title="Back to Products"
             >
-              <ArrowLeft size={20} />
+              <ArrowLeftLinear size={20} />
             </button>
             <span className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider bg-gray-100 dark:bg-gray-800 px-3 py-1">
               {product.category?.name || 'Uncategorized'}
@@ -137,8 +137,6 @@ const ProductDetail = () => {
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{product.name}</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
           <span className="font-medium text-gray-700 dark:text-gray-300">Product Code:</span> {product.productCode}
-          <span className="text-gray-300 dark:text-gray-700">|</span>
-          <span className="font-medium text-gray-700 dark:text-gray-300">SKU:</span> {product.sku || 'N/A'}
         </p>
       </div>
 
@@ -161,7 +159,7 @@ const ProductDetail = () => {
                   onClick={() => setFullscreenPreview(true)}
                   title="Preview"
                 >
-                  <Eye className="text-white" size={32} />
+                  <EyeLinear className="text-white" size={32} />
                 </div>
               </>
             ) : (
@@ -175,7 +173,7 @@ const ProductDetail = () => {
                 onClick={() => setCurrentImageIdx(prev => (prev > 0 ? prev - 1 : prev))}
                 className="p-1 hover:bg-gray-100 text-gray-400 transition-colors"
               >
-                <ChevronLeft size={18} />
+                <AltArrowLeftLinear size={18} />
               </button>
 
               <div className="flex gap-2">
@@ -192,7 +190,7 @@ const ProductDetail = () => {
                 onClick={() => setCurrentImageIdx(prev => (prev < allImages.length - 1 ? prev + 1 : prev))}
                 className="p-1 hover:bg-gray-100 text-gray-400 transition-colors"
               >
-                <ChevronRight size={18} />
+                <AltArrowRightLinear size={18} />
               </button>
             </div>
           )}
@@ -228,20 +226,22 @@ const ProductDetail = () => {
         {/* ROW 2 */}
         {/* Barcode block */}
         <div className="lg:col-span-4 bg-white dark:bg-[#1a1d24] p-6 border border-gray-200 dark:border-gray-800 flex flex-col items-center justify-center transition-colors">
-          {product.barcode ? (
+          {product.productCode ? (
             <>
               <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Product Barcode</h3>
-              <div className="bg-white p-2 rounded">
-                <Barcode
-                  value={product.barcode}
+              <div className="bg-white p-4 rounded-xl border border-gray-100 flex items-center justify-center">
+              <div className="scale-90 origin-center">
+                <Barcode 
+                  value={product.productCode} 
+                  format="CODE128"
                   width={1.5}
                   height={50}
                   fontSize={14}
-                  background="transparent"
-                  lineColor="#111827"
-                  margin={0}
+                  background="#ffffff"
+                  lineColor="#000000"
                 />
               </div>
+            </div>
             </>
           ) : (
             <span className="text-gray-400 dark:text-gray-500">No Barcode</span>
@@ -304,7 +304,7 @@ const ProductDetail = () => {
               }}
               className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 p-3 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full transition-all z-10"
             >
-              <ChevronLeft size={32} />
+              <AltArrowLeftLinear size={32} />
             </button>
           )}
 
@@ -323,7 +323,7 @@ const ProductDetail = () => {
               }}
               className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 p-3 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full transition-all z-10"
             >
-              <ChevronRight size={32} />
+              <AltArrowRightLinear size={32} />
             </button>
           )}
         </div>

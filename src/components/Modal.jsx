@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X } from 'lucide-react';
+import { CloseCircleLinear } from 'solar-icon-set';
 
 const Modal = ({ isOpen, onClose, title, children, maxWidth = 'max-w-2xl' }) => {
   // Prevent scrolling when modal is open
@@ -32,7 +32,7 @@ const Modal = ({ isOpen, onClose, title, children, maxWidth = 'max-w-2xl' }) => 
             onClick={onClose}
             className="p-2 rounded-full text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
-            <X size={20} />
+            <CloseCircleLinear size={20} />
           </button>
         </div>
         

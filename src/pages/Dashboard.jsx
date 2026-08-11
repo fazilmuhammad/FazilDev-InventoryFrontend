@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getDashboardStats } from '../services/api';
-import { Package, Tag, DollarSign, AlertTriangle, Clock, ArrowRight } from 'lucide-react';
+import { BoxLinear, TagLinear, DollarLinear, DangerTriangleLinear, ClockCircleLinear, ArrowRightLinear } from 'solar-icon-set';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { SkeletonCard, SkeletonTable } from '../components/Skeleton';
@@ -81,7 +81,7 @@ const Dashboard = () => {
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white">{stats.totalProducts}</h3>
           </div>
           <div className="p-4 bg-primary/10 dark:bg-primary/20 rounded-full text-primary dark:text-primary-hover">
-            <Package size={24} />
+            <BoxLinear size={24} />
           </div>
         </div>
 
@@ -91,7 +91,7 @@ const Dashboard = () => {
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white">{stats.totalCategories}</h3>
           </div>
           <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-full text-green-600 dark:text-green-400">
-            <Tag size={24} />
+            <TagLinear size={24} />
           </div>
         </div>
 
@@ -101,7 +101,7 @@ const Dashboard = () => {
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white">{formatCurrency(stats.totalInventoryValue)}</h3>
           </div>
           <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
-            <DollarSign size={24} />
+            <DollarLinear size={24} />
           </div>
         </div>
       </div>
@@ -112,7 +112,7 @@ const Dashboard = () => {
         <div className="bg-white dark:bg-[#1a1d24] border border-gray-200 dark:border-gray-800 transition-colors">
           <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <AlertTriangle size={20} className="text-red-500" />
+              <DangerTriangleLinear size={20} className="text-red-500" />
               Low Stock Alerts
             </h3>
             <span className="text-xs font-semibold bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 px-2 py-1 rounded-full">
@@ -128,7 +128,6 @@ const Dashboard = () => {
                 <thead className="bg-gray-50 dark:bg-gray-800/50 text-gray-500 dark:text-gray-400 uppercase text-xs">
                   <tr>
                     <th className="px-5 py-3 font-semibold border-b border-gray-200 dark:border-gray-800">Product</th>
-                    <th className="px-5 py-3 font-semibold border-b border-gray-200 dark:border-gray-800">SKU</th>
                     <th className="px-5 py-3 font-semibold border-b border-gray-200 dark:border-gray-800 text-right">Stock</th>
                   </tr>
                 </thead>
@@ -140,7 +139,6 @@ const Dashboard = () => {
                           {product.name}
                         </Link>
                       </td>
-                      <td className="px-5 py-3 text-sm text-gray-500 dark:text-gray-400">{product.sku || '-'}</td>
                       <td className="px-5 py-3 text-sm font-bold text-red-600 dark:text-red-400 text-right">{product.totalStock}</td>
                     </tr>
                   ))}
@@ -154,11 +152,11 @@ const Dashboard = () => {
         <div className="bg-white dark:bg-[#1a1d24] border border-gray-200 dark:border-gray-800 transition-colors">
           <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <Clock size={20} className="text-gray-500 dark:text-gray-400" />
+              <ClockCircleLinear size={20} className="text-gray-500 dark:text-gray-400" />
               Recently Added
             </h3>
             <Link to="/products" className="text-sm font-medium text-primary hover:text-primary-hover dark:text-blue-400 dark:hover:text-blue-300 flex items-center gap-1 transition-colors">
-              View All <ArrowRight size={16} />
+              View All <ArrowRightLinear size={16} />
             </Link>
           </div>
           
@@ -182,7 +180,7 @@ const Dashboard = () => {
                             {product.mainImage ? (
                               <img src={`http://localhost:3000${product.mainImage}`} alt={product.name} className="w-full h-full object-cover" />
                             ) : (
-                              <Package size={16} className="text-gray-400 dark:text-gray-500" />
+                              <BoxLinear size={16} className="text-gray-400 dark:text-gray-500" />
                             )}
                           </div>
                           <div>

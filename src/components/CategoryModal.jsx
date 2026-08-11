@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { X, Tag } from 'lucide-react';
+import { CloseCircleLinear, TagLinear } from 'solar-icon-set';
 
 const CategoryModal = ({ isOpen, onClose, onSave, defaultValues }) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -31,7 +31,7 @@ const CategoryModal = ({ isOpen, onClose, onSave, defaultValues }) => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 flex items-center justify-center bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-hover">
-                <Tag size={20} />
+                <TagLinear size={20} />
               </div>
               <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                 {defaultValues ? 'Edit Category' : 'Add New Category'}
@@ -41,7 +41,7 @@ const CategoryModal = ({ isOpen, onClose, onSave, defaultValues }) => {
               onClick={onClose}
               className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
-              <X size={20} />
+              <CloseCircleLinear size={20} />
             </button>
           </div>
 

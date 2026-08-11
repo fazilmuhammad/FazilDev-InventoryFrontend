@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Plus, Filter, FileSpreadsheet, FileText, Image as ImageIcon } from 'lucide-react';
+import { MagniferLinear, AddCircleLinear, FilterLinear, DocumentLinear, DocumentTextLinear, GalleryLinear } from 'solar-icon-set';
 import Table from '../components/Table';
 import { getProducts, getCategories, downloadReport, deleteProduct, adjustStock } from '../services/api';
 import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
@@ -135,7 +135,7 @@ const ProductsList = () => {
             {row.mainImage ? (
               <img src={`http://localhost:3000${row.mainImage}`} alt={row.name} className="w-full h-full object-cover" />
             ) : (
-              <ImageIcon className="text-gray-400" />
+              <GalleryLinear className="text-gray-400" />
             )}
           </div>
           <div>
@@ -143,13 +143,6 @@ const ProductsList = () => {
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{row.productCode}</div>
           </div>
         </div>
-      )
-    },
-    {
-      header: 'SKU',
-      accessorKey: 'sku',
-      cell: (row) => (
-        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{row.sku || '-'}</span>
       )
     },
     {
@@ -202,18 +195,18 @@ const ProductsList = () => {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Products</h1>
         <div className="flex flex-wrap items-center gap-3">
           <button onClick={() => downloadReport('excel', 'products_report.xlsx')} className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-[#1a1d24] border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors text-sm rounded-none">
-            <FileSpreadsheet size={16} />
+            <DocumentLinear size={16} />
             Excel
           </button>
           <button onClick={() => downloadReport('pdf', 'products_report.pdf')} className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-[#1a1d24] border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors text-sm rounded-none">
-            <FileText size={16} />
+            <DocumentTextLinear size={16} />
             PDF
           </button>
           <Link
             to="/products/new"
             className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-white hover:bg-primary-hover shadow-sm transition-all text-sm rounded-none"
           >
-            <Plus size={16} />
+            <AddCircleLinear size={16} />
             Add Product
           </Link>
         </div>
@@ -221,7 +214,7 @@ const ProductsList = () => {
 
       <div className="flex flex-row items-center gap-2 mb-6 w-full">
         <div className="relative flex-1">
-          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" size={16} />
+          <MagniferLinear className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" size={16} />
           <input
             type="text"
             placeholder="Search products by name or SKU..."
@@ -244,7 +237,7 @@ const ProductsList = () => {
             }}
             className="flex items-center gap-1.5 px-2.5 py-1.5 pr-7 text-sm border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-blue-400 transition-all bg-white dark:bg-[#1a1d24] text-gray-700 dark:text-gray-300 w-[180px] text-left relative"
           >
-            <Filter size={16} className="text-gray-400 dark:text-gray-500" />
+            <FilterLinear size={16} className="text-gray-400 dark:text-gray-500" />
             <span className="truncate flex-1">
               {selectedCategory
                 ? categories.find(c => c.id.toString() === selectedCategory.toString())?.name || 'All Categories'

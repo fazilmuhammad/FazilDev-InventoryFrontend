@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PackagePlus, X } from 'lucide-react';
+import { BoxMinimalisticLinear, CloseCircleLinear } from 'solar-icon-set';
 
 const AdjustStockModal = ({ isOpen, onClose, onConfirm, currentStock }) => {
   const [adjustment, setAdjustment] = useState('');
@@ -23,7 +23,7 @@ const AdjustStockModal = ({ isOpen, onClose, onConfirm, currentStock }) => {
         <div className="p-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 flex items-center justify-center bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-hover">
-              <PackagePlus size={20} />
+              <BoxMinimalisticLinear size={20} />
             </div>
             <h3 className="text-lg font-bold text-gray-900 dark:text-white">Adjust Stock</h3>
           </div>

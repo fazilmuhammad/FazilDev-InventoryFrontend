@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Package, Lock, Mail, Eye, EyeOff } from 'lucide-react';
+import { BoxLinear, LockKeyholeLinear, LetterLinear, EyeLinear, EyeClosedLinear } from 'solar-icon-set';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 
@@ -40,7 +40,7 @@ const Login = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white dark:bg-[#1a1d24] py-8 px-4 shadow sm:rounded-none sm:px-10 border border-gray-200 dark:border-gray-800 transition-colors">
           <div className="flex justify-center items-center gap-3 text-primary dark:text-white mb-8">
-            <Package size={36} />
+            <BoxLinear size={36} />
             <h2 className="text-2xl font-bold">Eurika-Inventory</h2>
           </div>
           <form className="space-y-6" onSubmit={handleLogin}>
@@ -48,7 +48,7 @@ const Login = () => {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email address</label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400 dark:text-gray-500" />
+                  <LetterLinear className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                 </div>
                 <input
                   type="email"
@@ -65,7 +65,7 @@ const Login = () => {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400 dark:text-gray-500" />
+                  <LockKeyholeLinear className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                 </div>
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -81,7 +81,7 @@ const Login = () => {
                     onClick={() => setShowPassword(!showPassword)}
                     className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none transition-colors"
                   >
-                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                    {showPassword ? <EyeClosedLinear className="h-4 w-4" /> : <EyeLinear className="h-4 w-4" />}
                   </button>
                 </div>
               </div>
