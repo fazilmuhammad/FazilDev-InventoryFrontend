@@ -9,12 +9,19 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
+import CustomToaster from './components/CustomToaster';
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return null;
+  }
+
   if (!user) {
     return <Navigate to="/login" replace />;
   }
+
   return children;
 };
 
@@ -35,6 +42,7 @@ const App = () => {
             </Route>
           </Routes>
         </BrowserRouter>
+        <CustomToaster />
       </AuthProvider>
     </ThemeProvider>
   );

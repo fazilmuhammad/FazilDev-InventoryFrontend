@@ -3,50 +3,66 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => {
-    try {
-      const storedUser = localStorage.getItem('user');
-      if (storedUser && storedUser !== 'undefined' && storedUser !== 'null') {
-        return JSON.parse(storedUser);
-      }
-    } catch (e) {
-      console.error("Failed to parse user from local storage", e);
+const getStoredUser = () => {
+  try {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser && storedUser !== 'undefined' && storedUser !== 'null') {
+      return JSON.parse(storedUser);
     }
-    return null;
-  });
+  } catch (e) {
+    console.error('Failed to parse user from local storage', e);
+  }
+  return null;
+};
 
-  const [loading, setLoading] = useState(true);
+const getStoredToken = () => {
+  const token = localStorage.getItem('token');
+  if (token && token !== 'undefined' && token !== 'null') {
+    return token;
+  }
+  return null;
+};
+
+const clearAuthStorage = () => {
+  localStorage.removeItem('user');
+  localStorage.removeItem('token');
+  try {
+    delete axios.defaults.headers.common['Authorization'];
+  } catch (e) {}
+};
+
+export const AuthProvider = ({ children }) => {
+  // Initialize user synchronously from localStorage
+  const [user, setUser] = useState(() => getStoredUser());
+  // We no longer need a loading state because initialization is synchronous
+  const loading = false;
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token && user) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    } else if (!token || !user) {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      setUser(null);
+    const token = getStoredToken();
+    if (token) {
+      try {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      } catch (e) {}
     }
-    setLoading(false);
   }, []);
 
   const login = (userData, token) => {
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
     localStorage.setItem('token', token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    try {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    } catch (e) {}
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
+    clearAuthStorage();
   };
 
   return (
     <AuthContext.Provider value={{ user, login, logout, loading }}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };
