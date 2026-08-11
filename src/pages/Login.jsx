@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { BoxLinear, LockKeyholeLinear, LetterLinear, EyeLinear, EyeClosedLinear } from 'solar-icon-set';
+import { BoxLinear, LockKeyholeLinear, LetterLinear, EyeLinear, EyeClosedLinear, BuildingsLinear } from 'solar-icon-set';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 
@@ -39,9 +39,12 @@ const Login = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-[#0f1115] flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans transition-colors">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white dark:bg-[#1a1d24] py-8 px-4 shadow sm:rounded-none sm:px-10 border border-gray-200 dark:border-gray-800 transition-colors">
-          <div className="flex justify-center items-center gap-3 text-primary dark:text-white mb-8">
-            <BoxLinear size={36} />
-            <h2 className="text-2xl font-bold">Eurika-Inventory</h2>
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-2xl text-primary dark:text-white mb-4">
+              <BuildingsLinear size={36} />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Eurika-Inventory</h2>
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Sign in to manage your inventory</p>
           </div>
           <form className="space-y-6" onSubmit={handleLogin}>
             <div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { WidgetLinear, BoxLinear, TagLinear, Logout3Linear, HamburgerMenuLinear, CloseCircleLinear, ArrowLeftLinear, ArrowRightLinear, UserCircleLinear, AltArrowDownLinear, SunLinear, MoonLinear } from 'solar-icon-set';
-import { Toaster } from 'react-hot-toast';
+import { WidgetLinear, BoxLinear, BuildingsLinear, TagLinear, Logout3Linear, HamburgerMenuLinear, CloseCircleLinear, ArrowLeftLinear, ArrowRightLinear, UserCircleLinear, AltArrowDownLinear, SunLinear, MoonLinear, DangerCircleLinear, CheckCircleLinear, InfoCircleLinear } from 'solar-icon-set';
+import { Toaster, resolveValue, toast } from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 
@@ -31,8 +31,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       >
         <div className="h-16 flex items-center justify-between px-6 border-b border-gray-200 dark:border-gray-800 overflow-hidden">
           <div className="flex items-center gap-3 text-primary dark:text-white">
-            <BoxLinear size={24} className="flex-shrink-0" />
-            <h1 className={`text-xl font-bold whitespace-nowrap transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 hidden md:block md:w-0'}`}>
+            <BuildingsLinear size={24} className="flex-shrink-0" />
+            <h1 className={`text-xl font-bold whitespace-nowrap transition-opacity duration-300 hidden md:block ${isOpen ? 'opacity-100' : 'opacity-0 w-0'}`}>
               Eurika-Inventory
             </h1>
           </div>
@@ -156,32 +156,39 @@ const Layout = () => {
           </div>
         </main>
       </div>
-      <Toaster 
-        position="bottom-right" 
-        toastOptions={{
-          style: {
-            borderRadius: '0px',
-            background: isDarkMode ? '#1a1d24' : '#ffffff',
-            color: isDarkMode ? '#f3f4f6' : '#111827',
-            border: isDarkMode ? '1px solid #374151' : '1px solid #e5e7eb',
-            boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.05)',
-            fontSize: '14px',
-            fontWeight: '500'
-          },
-          success: {
-            iconTheme: {
-              primary: isDarkMode ? '#3b82f6' : '#111827',
-              secondary: isDarkMode ? '#1a1d24' : '#fff',
-            },
-          },
-          error: {
-            iconTheme: {
-              primary: '#ef4444',
-              secondary: isDarkMode ? '#1a1d24' : '#fff',
-            },
-          },
-        }}
-      />
+      <Toaster position="bottom-right">
+        {(t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } max-w-sm w-full bg-white dark:bg-[#1a1d24] border border-gray-200 dark:border-gray-800 shadow-lg pointer-events-auto flex flex-col p-4 transition-all`}
+          >
+            <div className="flex items-center justify-between mb-3 border-b border-gray-100 dark:border-gray-800 pb-3">
+              <div className="flex items-center gap-2">
+                {t.type === 'error' ? (
+                  <DangerCircleLinear color="#ef4444" size={20} />
+                ) : t.type === 'success' ? (
+                  <CheckCircleLinear color="#22c55e" size={20} />
+                ) : (
+                  <InfoCircleLinear color="#eab308" size={20} />
+                )}
+                <h3 className={`text-sm font-bold uppercase tracking-wider ${t.type === 'error' ? 'text-red-600 dark:text-red-400' : t.type === 'success' ? 'text-green-600 dark:text-green-400' : 'text-yellow-600 dark:text-yellow-400'}`}>
+                  {t.type === 'error' ? 'Error' : t.type === 'success' ? 'Success' : 'Notification'}
+                </h3>
+              </div>
+              <button 
+                onClick={() => toast.dismiss(t.id)} 
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              >
+                <CloseCircleLinear size={18} />
+              </button>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-400 pl-7 leading-relaxed">
+              {resolveValue(t.message, t)}
+            </p>
+          </div>
+        )}
+      </Toaster>
     </div>
   );
 };

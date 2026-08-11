@@ -90,7 +90,7 @@ const ProductForm = () => {
 
     const validFiles = files.filter(file => {
       if (file.size > 2 * 1024 * 1024) {
-        toast.error(`${file.name} exceeds 2MB limit`);
+        toast.error('Image exceeds 2MB limit');
         return false;
       }
       return true;
