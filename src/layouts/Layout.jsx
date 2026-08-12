@@ -33,7 +33,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <div className="flex items-center gap-3 text-primary dark:text-white">
             <BuildingsLinear size={24} className="flex-shrink-0" />
             <h1 className={`text-xl font-bold whitespace-nowrap transition-opacity duration-300 hidden md:block ${isOpen ? 'opacity-100' : 'opacity-0 w-0'}`}>
-              Eurika-Inventory
+              Eureka-Inventory
             </h1>
           </div>
           <button onClick={toggleSidebar} className="text-gray-500 hover:text-gray-900 dark:text-gray-400 md:hidden flex-shrink-0">

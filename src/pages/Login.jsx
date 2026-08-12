@@ -43,7 +43,7 @@ const Login = () => {
             <div className="inline-flex items-center justify-center p-3  rounded-2xl text-primary dark:text-white mb-4">
               <BuildingsLinear size={36} />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Eurika-Inventory</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Eureka-Inventory</h2>
           </div>
           <form className="space-y-6" onSubmit={handleLogin}>
             <div>
@@ -58,7 +58,7 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-3 py-2 text-sm border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#0f1115] text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-blue-400 focus:border-primary transition-all"
-                  placeholder="admin@eurika.com"
+                  placeholder="admin@eureka.com"
                 />
               </div>
             </div>
