@@ -32,9 +32,7 @@ const clearAuthStorage = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  // Initialize user synchronously from localStorage
   const [user, setUser] = useState(() => getStoredUser());
-  // We no longer need a loading state because initialization is synchronous
   const loading = false;
 
   useEffect(() => {

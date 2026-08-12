@@ -97,7 +97,7 @@ const ProductDetail = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header Info Card */}
+    
       <div className="bg-white dark:bg-[#1a1d24] p-6 border border-gray-200 dark:border-gray-800 w-full transition-colors">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex items-start gap-4">
@@ -135,11 +135,8 @@ const ProductDetail = () => {
         </div>
       </div>
 
-      {/* Main Grid: items-stretch automatically matches heights of items in the same row */}
+   
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-
-        {/* ROW 1 */}
-        {/* Image Viewer */}
         <div className="lg:col-span-4 bg-white dark:bg-[#1a1d24] p-4 border border-gray-200 dark:border-gray-800 flex flex-col items-center transition-colors">
           <div className="w-full flex-1 min-h-[250px] bg-gray-50 dark:bg-gray-800/50 overflow-hidden mb-4 flex items-center justify-center relative group">
             {allImages.length > 0 ? (
@@ -191,7 +188,6 @@ const ProductDetail = () => {
           )}
         </div>
 
-        {/* Details Grid Card */}
         <div className="lg:col-span-8 bg-white dark:bg-[#1a1d24] p-6 md:p-8 border border-gray-200 dark:border-gray-800 flex flex-col justify-center transition-colors">
           <h3 className="text-sm font-semibold text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3 mb-6 uppercase tracking-wider">Inventory & Sourcing Details</h3>
 
@@ -208,8 +204,6 @@ const ProductDetail = () => {
         </div>
 
 
-        {/* ROW 2 */}
-        {/* Barcode block */}
         <div className="lg:col-span-4 bg-white dark:bg-[#1a1d24] p-6 border border-gray-200 dark:border-gray-800 flex flex-col items-center justify-center transition-colors">
           {product.productCode ? (
             <>
@@ -233,8 +227,6 @@ const ProductDetail = () => {
           )}
         </div>
 
-
-        {/* System Info Card */}
         <div className="lg:col-span-8 bg-white dark:bg-[#1a1d24] p-6 md:p-8 border border-gray-200 dark:border-gray-800 flex flex-col justify-center transition-colors">
           <h3 className="text-sm font-semibold text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3 mb-6 uppercase tracking-wider">System Information</h3>
 
@@ -267,7 +259,6 @@ const ProductDetail = () => {
         currentStock={stock}
       />
 
-      {/* Fullscreen Image Preview Modal */}
       {fullscreenPreview && allImages.length > 0 && (
         <div
           className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm"

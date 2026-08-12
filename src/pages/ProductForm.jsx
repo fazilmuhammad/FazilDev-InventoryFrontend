@@ -161,7 +161,7 @@ const ProductForm = () => {
 
   return (
     <div className="space-y-6 w-full">
-      {/* Header Info Card */}
+    
       <div className="bg-white dark:bg-[#1a1d24] p-6 border border-gray-200 dark:border-gray-800 w-full transition-colors">
         <div className="flex items-center gap-3">
           <button
@@ -399,7 +399,7 @@ const ProductForm = () => {
         confirmColorClass="bg-gray-900 hover:bg-black text-white"
       />
 
-      {/* Fullscreen Image Preview Modal */}
+  
       {fullscreenPreview && (
         <div 
           className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm"

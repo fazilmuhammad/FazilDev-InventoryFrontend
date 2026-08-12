@@ -17,7 +17,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   return (
     <>
-      {/* Mobile overlay */}
+      
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/20 z-20 md:hidden"
@@ -95,20 +95,19 @@ const Layout = () => {
 
       <div className={`flex-1 flex flex-col min-w-0 h-screen transition-all duration-300 ${sidebarOpen ? 'md:ml-64' : 'md:ml-20'}`}>
         <header className="h-16 flex-shrink-0 bg-white dark:bg-[#1a1d24] border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 z-10 transition-colors">
-          {/* Mobile Sidebar Toggle (Hidden on Desktop) */}
+        
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-2 -ml-2 text-gray-500 hover:bg-gray-100 transition-colors md:hidden"
           >
             <HamburgerMenuLinear size={24} />
           </button>
-          <div className="flex-1 md:hidden"></div> {/* Spacer for mobile */}
+          <div className="flex-1 md:hidden"></div> 
           
-          <div className="flex-1 hidden md:block"></div> {/* Spacer for desktop */}
+          <div className="flex-1 hidden md:block"></div> 
 
-          {/* Top Right Action & Avatar Dropdown */}
           <div className="flex items-center gap-3 relative">
-            {/* Dark Mode Toggle */}
+           
             <button
               onClick={toggleTheme}
               className="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"

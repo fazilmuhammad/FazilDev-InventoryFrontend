@@ -18,13 +18,13 @@ const Modal = ({ isOpen, onClose, title, children, maxWidth = 'max-w-2xl' }) => 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
+
       <div 
         className="absolute inset-0 bg-gray-900/60 dark:bg-gray-900/80 backdrop-blur-sm transition-opacity" 
         onClick={onClose}
       />
       
-      {/* Modal Content */}
+    
       <div className={`relative bg-white dark:bg-[#1a1d24] rounded-2xl shadow-xl w-full ${maxWidth} max-h-[90vh] flex flex-col overflow-hidden transform transition-all border border-transparent dark:border-gray-800`}>
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/50">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>

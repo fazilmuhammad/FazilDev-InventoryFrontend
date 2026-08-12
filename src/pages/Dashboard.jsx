@@ -64,7 +64,6 @@ const Dashboard = () => {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Dashboard Overview</h1>
       </div>
 
-      {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white dark:bg-[#1a1d24] p-6 border border-gray-200 dark:border-gray-800 flex items-center justify-between transition-colors">
           <div>
@@ -87,9 +86,8 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Detailed Sections */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Low Stock Alerts */}
+   
         <div className="bg-white dark:bg-[#1a1d24] border border-gray-200 dark:border-gray-800 transition-colors">
           <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
@@ -129,7 +127,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Recently Added */}
         <div className="bg-white dark:bg-[#1a1d24] border border-gray-200 dark:border-gray-800 transition-colors">
           <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
