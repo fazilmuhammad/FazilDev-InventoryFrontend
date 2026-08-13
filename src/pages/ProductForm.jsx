@@ -20,6 +20,7 @@ const ProductForm = () => {
   
   const [galleryPreviews, setGalleryPreviews] = useState([]);
   const [galleryFiles, setGalleryFiles] = useState([]);
+  const [existingGalleryImages, setExistingGalleryImages] = useState([]); // Track existing images from DB
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoadingInit, setIsLoadingInit] = useState(isEdit);
@@ -60,7 +61,12 @@ const ProductForm = () => {
       }
       
       if (data.additionalImages && data.additionalImages.length > 0) {
-        setGalleryPreviews(data.additionalImages.map(img => `http://localhost:3000${img}`));
+        // Store display URLs for preview
+        const displayImages = data.additionalImages.map(img => `http://localhost:3000${img}`);
+        setGalleryPreviews(displayImages);
+        
+        // Store relative paths for backend submission
+        setExistingGalleryImages(data.additionalImages);
       }
     } catch (error) {
       toast.error('Failed to fetch product details');
@@ -83,7 +89,9 @@ const ProductForm = () => {
   const handleGalleryChange = (e) => {
     const files = Array.from(e.target.files);
     
-    if (galleryFiles.length + files.length > 4) {
+    // Check total images: existing + current new files + incoming files
+    const totalImages = existingGalleryImages.length + galleryFiles.length + files.length;
+    if (totalImages > 4) {
       toast.error('Maximum 4 gallery images allowed');
       return;
     }
@@ -104,7 +112,19 @@ const ProductForm = () => {
   };
 
   const removeGalleryImage = (index) => {
-    setGalleryFiles(prev => prev.filter((_, i) => i !== index));
+    // Check if this is a new file or existing image
+    const totalExisting = existingGalleryImages.length;
+    
+    if (index < totalExisting) {
+      // Removing an existing image from database
+      setExistingGalleryImages(prev => prev.filter((_, i) => i !== index));
+    } else {
+      // Removing a newly added file (index starts after existing images)
+      const fileIndex = index - totalExisting;
+      setGalleryFiles(prev => prev.filter((_, i) => i !== fileIndex));
+    }
+    
+    // Remove from preview display
     setGalleryPreviews(prev => prev.filter((_, i) => i !== index));
   };
 
@@ -135,6 +155,12 @@ const ProductForm = () => {
         formData.append('main_image', mainImageFile);
       }
       
+      // For edit: send existing images that should be kept
+      if (isEdit && existingGalleryImages.length > 0) {
+        formData.append('existing_images', JSON.stringify(existingGalleryImages));
+      }
+      
+      // Add new gallery files
       galleryFiles.forEach(file => {
         formData.append('additional_images', file);
       });
@@ -350,7 +376,7 @@ const ProductForm = () => {
                   </div>
                 ))}
                 
-                {galleryPreviews.length < 4 && (
+                {existingGalleryImages.length + galleryFiles.length < 4 && (
                   <div className="w-20 h-20 border-2 border-dashed border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex items-center justify-center relative hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                     <AddCircleLinear className="text-gray-400 dark:text-gray-500" size={20} />
                     <input 
